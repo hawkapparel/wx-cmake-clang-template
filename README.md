@@ -1,43 +1,21 @@
+# wxWidgets CMake Clang Template
+---
+
 Download, build and statically link wxWidgets as the GUI library for your C++ project!
+Solve the problem of missing wxWidgets headers and libraries in your C++ project.
 
-[![Video](/output.gif)](https://www.youtube.com/watch?v=zjNg5HdgNO0)
-
-Full Tutorial: https://www.youtube.com/watch?v=zjNg5HdgNO0
-
-```cmake
-cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
-
-project(wx_cmake_fetchcontent_template LANGUAGES CXX)
-
-include(FetchContent)
-
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(wxBUILD_SHARED OFF)
-
-message(STATUS "Fetching wxWidgets...")
-
-FetchContent_Declare(
-   wxWidgets
-   GIT_REPOSITORY https://github.com/wxWidgets/wxWidgets.git
-   GIT_SHALLOW ON
-)
-FetchContent_MakeAvailable(wxWidgets)
-
-set(SRCS main.cpp)
-
-add_executable(main WIN32 ${SRCS})
-target_link_libraries(main PRIVATE wxcore wxnet)
-```
+### Works in VSCode and Windsurf!
 
 ### System Requirements
 
 To get started with this project, ensure you have the following tools and libraries:
 
-- **CMake (Version 3.14 or later):** Essential for building and managing the project files.
-- **C++ Compiler:** Compatible with Clang, GCC, or MSVC. Choose one based on your development environment.
-- **GTK3 Development Libraries (for Linux users):** Necessary for GUI development on Linux platforms.
+- **CMake (Version 3.14 or later):** Essential for building and managing the project files. (4.0.2 Tested)
+- **clangd C++ Compiler:** https://clangd.llvm.org/installation (20.1.7 Tested)
+- **wxWidgets** https://wxwidgets.org/downloads/  (Stable 3.2.8 Tested)
+
+Setup video reference: https://www.youtube.com/watch?v=3NsbeBDtMCc
+References: https://github.com/lszl84/wx_cmake_fetchcontent_template
 
 ### Building the Project
 
@@ -77,10 +55,11 @@ cmake -S. -Bbuild-rel -DCMAKE_BUILD_TYPE=Release
 cmake --build build-rel -j
 ```
 
+#### Ready configuration for VSCode and Windsurf (Run and Debug)
+in .vscode/launch.json have ready configurations for Debug and Release.
+For Debug: (Debug) Launch
+For Release: (msvc Release) Launch
+
 ### License
 
 MIT License. Can be used in closed-source commercial products.
-
----
-Check out the blog for more! [www.onlyfastcode.com](https://www.onlyfastcode.com)
----
